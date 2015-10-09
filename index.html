@@ -1,48 +1,105 @@
+<!DOCTYPE html>
+<!-- Motivate from https://mxcl.github.io/ -->
 <html>
   <head>
     <title>Arjun Passi</title>
-	<meta name ="viewport" content="width=device-width, initial-scale=1.0">
-	<link href = "css/bootstrap.min.css" rel = "stylesheet">
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300">
+    <style>
+      html {
+        background: #000000;
+        color: white;
+        font-family: 'Raleway', sans-serif;
+        text-transform: uppercase;
+      }
+      h1 {
+        background: #000000;
+        border-radius: 0.3rem;
+        padding: 0.3rem 0.5rem;
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+        margin: 0;
+      }
+      .clover {
+        height: 2.9rem;
+        width: 2.9rem;
+        margin: 0.1rem 1.1rem;
+      }
+      #top * {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 5rem;
+      }
+      #bop {
+        margin-top: 0.8rem;
+        font-size: 0.85rem;
+      }
+      #fop {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2rem;
+        padding-bottom: 1rem;
+        transform: scale(0.75,0.75);
+      }
+      #fop img {
+        height: 2rem;
+        margin: 0 0.6rem;
+      }
+      #fop img#gplus {
+        height: 1.5rem;
+        margin-bottom: 0.25rem;
+      }
+      .dot:before {
+        content: " / ";
+        color: white;
+      }
+      @media (max-width: 321px) {
+        #fop {
+          position: static;
+          margin-top: 5rem;
+        }
+        #fop img {
+          height: 3rem;
+          margin: 0 1rem;
+        }
+        #fop img#gplus {
+          height: 2.5rem;
+          margin-bottom: 0.25rem;
+        }
+      }
+      @media (min-width: 320px) {
+        html {
+          font-size: 10px;
+        }
+      }
+      @media (min-width: 320px) and (orientation: landscape) {
+        html {
+          font-size: 15px;
+        }
+      }
+      @media (min-width: 589px) {
+        html {
+          font-size: 20px;
+        }
+      }
+      @media (min-width: 733px) {
+        html {
+          font-size: 25px;
+        }
+      }
+      @media (min-width: 870px) {
+        html {
+          font-size: 30px;
+        }
+      }
+    </style>
   </head>
-  <BODY>
-
-  		<!-- Fixed navbar -->
-	    <div class="navbar-custom" role="navigation">
-	      <div class="container">
-	        <div class="navbar-header">
-	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-	            <span class="sr-only">Toggle navigation</span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	            <span class="icon-bar"></span>
-	          </button>
-	          <a class="navbar-brand" href="#">Arjun Passi</a>
-	        </div>
-	        <div class="navbar-collapse collapse">
-	          <ul class="nav navbar-nav">
-	            <li><a href="index.html">About Me</a></li>
-	            <li><a href="courses.html">Courses</a></li>
-	            <li><a href="resume.pdf">Resume</a></li>
-	            <li><a href="https://github.com/apassi99">GitHub</a><li>
-	          </ul>
-	        </div><!--/.nav-collapse -->
-	      </div>
-	    </div>
-
-	    <div class="container" >
-			<font face="arial" color=#eb7171>
-				<br><br>
-
-				<div>
-
-					<div class="pull-right">
-	        			<img src="images/me.jpg" class="img-rounded" height=170 width=170>
-	        		</div>
-
-					<h1>About Me!</h1>
-					<p>Simple Message<p>
-				</div>
-			</font>
-		</div>
-</body>
+  <body>
+    <center id='top'><h1>Arjun&nbsp;Passi</h1></center>
+    <center id='bop'>Engineer<span class='dot'></span>Developer<span class='dot'></span>Problem Solver</center>
+    <center id='fop'><a href='https://github.com/apassi99'><img src='github.png'></a><a href='https://plus.google.com/107439675612745439100/about'><img src='googleplus.png' id='gplus'></a><a href='https://www.linkedin.com/in/apassi'><img src='linkedin.png'></a></center>
+  </body>
 </html>
