@@ -6,9 +6,50 @@
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
+
+      $(document).ready(function () {
+        var min_w = 300; // minimum video width allowed
+        var vid_w_orig;  // original video dimensions
+        var vid_h_orig;
+
+        jQuery(function() { // runs after DOM has loaded
+
+            vid_w_orig = parseInt(jQuery('video').attr('width'));
+            vid_h_orig = parseInt(jQuery('video').attr('height'));
+            $('#debug').append("<p>DOM loaded</p>");
+
+            jQuery(window).resize(function () { resizeToCover(); });
+            jQuery(window).trigger('resize');
+        });
+
+        function resizeToCover() {
+
+            // set the video viewport to the window size
+            jQuery('#video-viewport').width(jQuery(window).width());
+            jQuery('#video-viewport').height(jQuery(window).height());
+
+            // use largest scale factor of horizontal/vertical
+            var scale_h = jQuery(window).width() / vid_w_orig;
+            var scale_v = jQuery(window).height() / vid_h_orig;
+            var scale = scale_h > scale_v ? scale_h : scale_v;
+
+            // don't allow scaled width < minimum video width
+            if (scale * vid_w_orig < min_w) {scale = min_w / vid_w_orig;};
+
+            // now scale the video
+            jQuery('video').width(scale * vid_w_orig);
+            jQuery('video').height(scale * vid_h_orig);
+            // and center it by scrolling the video viewport
+            jQuery('#video-viewport').scrollLeft((jQuery('video').width() - jQuery(window).width()) / 2);
+            jQuery('#video-viewport').scrollTop((jQuery('video').height() - jQuery(window).height()) / 2);
+        };
+      });
+      
+    </script>
     <style>
       html {
-        background-image: url('background_space1.png');
+        /*background-image: url('background_space1.png');*/
         background-size: 100% auto;
         color: white;
         font-family: 'Raleway', sans-serif;
@@ -58,6 +99,13 @@
         height: 1.5rem;
         margin-bottom: 0.25rem;
       }
+      #video-viewport {
+        position: absolute;
+        top: 0;
+        left:0;
+        overflow: hidden;
+        z-index: -1; /* for accessing the video by click */
+      }
       .dot:before {
         content: " / ";
         color: white;
@@ -104,6 +152,9 @@
     </style>
   </head>
   <body>
+    <div id="video-viewport">
+      <video width="100%" height="100%" autoplay muted loop><source src="videos/bg_biosphere.mp4" type="video/mp4" /></video>
+    </div>
     <center id='top'><h1>Arjun&nbsp;Passi</h1></center>
     <center id='bop'>printf("Balle Balle!");</center>
     <center id='fop'><a href='https://github.com/apassi99'><img src='github.png'></a><a href='https://plus.google.com/107439675612745439100/about'><img src='googleplus.png' id='gplus'></a><a href='https://www.linkedin.com/in/apassi'><img src='linkedin.png'></a></center>
