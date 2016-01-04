@@ -19,6 +19,7 @@
       font-style: normal;
       letter-spacing: -0.04em;
       line-height: 1.1;
+      margin-bottom: 5px;
     }
 
     h4 {
@@ -93,11 +94,11 @@
     }
 
     #fop img {
-      height: 4rem;
+      height: 3rem;
       margin: 0 0.6rem;
     }
     
     #fop img#gplus {
-      height: 3rem;
+      height: 2.3rem;
       margin-bottom: 0.35rem;
     }
