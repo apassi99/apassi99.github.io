@@ -111,6 +111,82 @@
         content: " / ";
         color: white;
       }
+
+      .menu-icon {
+        padding-top: 20px;
+        color: white;
+        display: block;
+        margin-left: 20px;
+      }
+
+      .menu-icon .rect {
+        width: 23px;
+        height: 3px;
+        position: absolute;
+        background-color: white;
+        transition: 0.35s all;
+      }
+
+      .menu-icon .top {
+        top: 10;
+      }
+
+      .menu-icon .middle {
+        top: 16px;
+      }
+
+      .menu-icon .bottom {
+        top: 22px;
+      }
+
+      .menu-icon .top.active {
+        top: 16px;
+        transform: rotate(45deg);
+      }
+
+      .menu-icon .middle.active {
+        opacity: 0;
+      }
+
+      .menu-icon .bottom.active {
+        transform: rotate(-45deg);
+        top: 16px;
+      }
+
+      .menu-container.active {
+        visibility: visible;
+        float: left;
+        /*border-style: solid;
+        border-color: white;*/
+      }
+
+      .menu-container ul {
+        list-style: none;
+        margin-top: 15px;
+        margin-left: -15px;
+        padding-right: 20px;
+      }
+
+      .menu-container a {
+        font-family: 'HelveticaNeue-Light', Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        color: white;
+        font-size: 0.7em;
+      }
+
+      .menu-container {
+        visibility: hidden;
+        /*max-width: 200px;*/
+        float: left;
+        border-radius: 15px;
+        list-style-type: none;
+        top: 20px;
+        left: 30px;
+        width: relative;
+        height: relative;
+        position: absolute;
+      }
+
       @media (max-width: 321px) {
         #fop {
           position: static;
@@ -156,6 +232,32 @@
     <div id="video-viewport">
       <video width="100% auto" height="100% auto" autoplay muted loop><source src="videos/bg_biosphere_2k.mp4" type="video/mp4" /></video>
     </div>
+    <div id="menu" class="menu-icon" width="23" height="30" >
+            <div class="top rect"></div>
+            <div class="middle rect"></div>
+            <div class="bottom rect"></div>
+    </div>
+
+    <div class="menu-container">
+        <ul>
+          <li><a href="#">Home</a></li>
+
+          <li><a href="https://apassi99.github.io/projects" target="_blank">Projects</a></li>
+
+          <li><a href="#">Resume</a></li>
+
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+      $( "#menu" ).click(function() {
+        $('.menu-container').toggleClass('active');
+        $('.menu-icon .top').toggleClass('active');
+        $('.menu-icon .middle').toggleClass('active');
+        $('.menu-icon .bottom').toggleClass('active');
+      });
+    </script>
+
     <center id='top'><h1>Arjun&nbsp;Passi</h1></center>
     <center id='bop'>printf("Balle Balle!");</center>
     <center id='fop'><a href='https://github.com/apassi99'><img src='images/github.png'></a><a href='https://plus.google.com/107439675612745439100/about'><img src='images/googleplus.png' id='gplus'></a><a href='https://www.linkedin.com/in/apassi'><img src='images/linkedin.png'></a></center>
