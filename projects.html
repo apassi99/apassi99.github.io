@@ -13,14 +13,21 @@
 
     <div class="box-wrap">
       <h2>What I Have Built So Far</h2>
-      
+
+
       <h4><a href="https://github.com/apassi99/Cerebot-MX7cK/tree/master/ADC.X" target="_blank">Simple Oscilloscope</a></h4><hr>
-      <p>The template is designed so that author affiliations are not repeated each time for multiple authors of the same affiliation. Please keep your affiliations as succinct as possible (for example, do not differentiate among departments of the same organization). This template was designed for two affiliations.</p><br><br>
+      <p>This is an implementation of a simple oscilloscope running on <a href="https://www.digilentinc.com/Products/Detail.cfm?NavPath=2,398,1244&Prod=CEREBOT-MX7CK" target="_blank">Cerebot-MX7cK board</a>. The goal of the system is create an oscilloscope by utilizing the on-board analog to digital converter (ADC), the timer peripheral, <a href="https://www.digilentinc.com/Products/Detail.cfm?NavPath=2,401,479&Prod=PMOD-ENC" target="_blank">rotary encoder</a>, and the <a href= "http://www.digilentinc.com/Products/Detail.cfm?Prod=PMOD-OLED" target="_blank">OLED output device</a>. The user provides inputs such as sampling time and trigger through the rotary encoder and the on-board buttons. Watch this <a href="https://www.youtube.com/watch?v=yWqrx08UeUs" target="_blank">video</a> if you are new to sampling theorum.</p>
+
+      <br><br>
 
 
       <h7>System Level Architecture</h7><br>
-      <p class="left">The template is designed so that author affiliations are not repeated each time for multiple authors of the same affiliation. Please keep your affiliations as succinct as possible (for example, do not differentiate among departments of the same organization). This template was designed for two affiliations.</p>
-      <img class="left" src="images/oscilloscope_architecture.png" width="400" height="relative"><br><br><br>
+
+      <p class="left" style="width: 47%; padding-right: 20px;">This section describes the higher level architecture of the system. The rotary encoder, OLED output, and the input from a function generator, are connected to port JA, JD, and JC respectively. The OLED provides the user with options to select the time division and trigger. The desired selections are made using the encoder. After all the inputs are selected, voltage values are sampled and displayed on the OLED.</p>
+      
+      <img style="width: 50%; padding-bottom: 30px;" src="images/oscilloscope_architecture.png">
+
+      <br><br>
 
       <h7>Demo Time</h7><br>
 
@@ -113,7 +120,6 @@
       <br><br><br>
 
       <center id='fop'><a href='https://github.com/apassi99' target="_blank"><img src='images/github_tomato.png'></a><a href='https://plus.google.com/107439675612745439100/about' target="_blank"><img src='images/googleplus_tomato.png' id='gplus'></a><a href='https://www.linkedin.com/in/apassi' target="_blank"><img src='images/linkedin_tomato.png'></a></center>
-
 
     </div>
   </body>
