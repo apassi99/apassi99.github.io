@@ -48,11 +48,22 @@
       color: skyblue;
     }
 
+    sup {
+      font-size:0.6em;
+    }
+
     p { 
       font-family: 'HelveticaNeue-Light', Arial, Helvetica, sans-serif; 
-      font-size: 16px; line-height: 26px;
+      font-size: 1em; line-height: 26px;
       margin: 0; 
       text-align: justify;
+    }
+
+    li {
+      font-family: 'HelveticaNeue-Light', Arial, Helvetica, sans-serif; 
+      font-size: 0.9em;
+      color: #e22c29;
+      margin: 3px;
     }
 
     a, a:visited, a:link, a:active { 
