@@ -132,14 +132,14 @@
     }
 
     .box-wrap {
-      max-width: 800px;
-      width: 100%;
+      /*max-width: 800px;*/
+      width: 70%;
       margin: auto;
     }
 
     .resume-wrap {
-      max-width: 950px;
-      width: 100%;
+      /*max-width: 950px;*/
+      width: 80%;
       height: 100%;
       margin: auto;
     }
