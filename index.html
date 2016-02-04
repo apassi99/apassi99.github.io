@@ -13,45 +13,9 @@
   <meta http-equiv="Content-Type" content="application/vnd.wap.xhtml+xml; charset=utf-8" />
   <meta name="HandheldFriendly" content="true" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript">
 
-      $(document).ready(function () {
-        var min_w = 300; // minimum video width allowed
-        var vid_w_orig;  // original video dimensions
-        var vid_h_orig;
-
-        jQuery(function() { // runs after DOM has loaded
-
-            vid_w_orig = parseInt(jQuery('video').attr('width'));
-            vid_h_orig = parseInt(jQuery('video').attr('height'));
-            $('#debug').append("<p>DOM loaded</p>");
-
-            jQuery(window).resize(function () { resizeToCover(); });
-            jQuery(window).trigger('resize');
-        });
-
-        function resizeToCover() {
-
-            // set the video viewport to the window size
-            jQuery('#video-viewport').width(jQuery(window).width());
-            jQuery('#video-viewport').height(jQuery(window).height());
-
-            // use largest scale factor of horizontal/vertical
-            var scale_h = jQuery(window).width() / vid_w_orig;
-            var scale_v = jQuery(window).height() / vid_h_orig;
-            var scale = scale_h > scale_v ? scale_h : scale_v;
-
-            // don't allow scaled width < minimum video width
-            if (scale * vid_w_orig < min_w) {scale = min_w / vid_w_orig;};
-
-            // now scale the video
-            jQuery('video').width(scale * vid_w_orig);
-            jQuery('video').height(scale * vid_h_orig);
-            // and center it by scrolling the video viewport
-            jQuery('#video-viewport').scrollLeft((jQuery('video').width() - jQuery(window).width()) / 2);
-            jQuery('#video-viewport').scrollTop((jQuery('video').height() - jQuery(window).height()) / 2);
-        };
-      });
+    <script src="js/jquery.min.js" type="text/javascript">
+      
       
     </script>
     <style>
@@ -112,6 +76,10 @@
         left:0;
         overflow: hidden;
         z-index: -1; /* for accessing the video by click */
+        -webkit-background-size:cover; 
+        -moz-background-size:cover; 
+        -o-background-size:cover; 
+        background-size:cover; 
       }
       .dot:before {
         content: " / ";
@@ -242,7 +210,10 @@
   </head>
   <body>
     <div id="video-viewport">
-      <video width="100% auto" height="100% auto" autoplay muted loop><source src="videos/seattle_timelapse.mp4" type="video/mp4" /></video>
+      <video id="bg_video" width="100% auto" height="100% auto" autoplay loop muted>
+        <source src="videos/ogv/seattle_timelapse.ogv" type="video/ogg" />
+        <source src="videos/mp4/seattle_timelapse.mp4" type="video/mp4" />
+      </video> <!-- bg_biosphere_2k seattle_timelapse -->
     </div>
     <div id="menu" class="menu-icon">
             <div class="top rect"></div>
@@ -261,13 +232,82 @@
         </ul>
     </div>
 
-    <script type="text/javascript">
+    <script>
+
+      var min_w = 300; // minimum video width allowed
+      var vid_w_orig;  // original video dimensions
+      var vid_h_orig;
+
+      $(document).ready(function () {
+        
+        console.log("document ready called");
+        //document.getElementById('bg_video').addEventListener('ended',videoLoop,false);
+
+        jQuery(function() { // runs after DOM has loaded
+
+            console.log("yo yo honey singha");
+            vid_w_orig = parseInt(jQuery('video').attr('width'));
+            vid_h_orig = parseInt(jQuery('video').attr('height'));
+            $('#debug').append("<p>DOM loaded</p>");
+
+            //jQuery(window).resize(function () { resizeToCover(); });
+            //jQuery(window).trigger('resize');
+        });
+
+      });
+
+        video_count = 0;
+
+
+        function videoLoop() {
+          console.log("videoLoop called");
+          videoPlayer = document.getElementById("bg_video_src");        
+          video=document.getElementById("bg_video");
+          var videoSource = new Array();
+          videoSource[0]='video/mp4/bg_biosphere_2k.mp4';
+          videoSource[1]='video/ogv/seattle_timelapse.ogv';
+          var videoCount = videoSource.length;
+
+
+          video_count = (video_count + 1 ) % videoCount;
+          video.setAttribute("src",videoSource[video_count]);
+          video.load();       
+          video.play();
+        }
+
+        function resizeToCover() {
+
+            console.log("resizeToCover");
+
+            // set the video viewport to the window size
+            jQuery('#video-viewport').width(jQuery(window).width());
+            jQuery('#video-viewport').height(jQuery(window).height());
+
+            // use largest scale factor of horizontal/vertical
+            var scale_h = jQuery(window).width() / vid_w_orig;
+            var scale_v = jQuery(window).height() / vid_h_orig;
+            var scale = scale_h > scale_v ? scale_h : scale_v;
+
+            // don't allow scaled width < minimum video width
+            if (scale * vid_w_orig < min_w) {scale = min_w / vid_w_orig;};
+
+            // now scale the video
+            jQuery('video').width(scale * vid_w_orig);
+            jQuery('video').height(scale * vid_h_orig);
+            // and center it by scrolling the video viewport
+            jQuery('#video-viewport').scrollLeft((jQuery('video').width() - jQuery(window).width()) / 2);
+            jQuery('#video-viewport').scrollTop((jQuery('video').height() - jQuery(window).height()) / 2);
+        };
+    </script>
+
+    <script>
       $( "#menu" ).click(function() {
         $('.menu-container').toggleClass('active');
         $('.menu-icon .top').toggleClass('active');
         $('.menu-icon .middle').toggleClass('active');
         $('.menu-icon .bottom').toggleClass('active');
       });
+
     </script>
 
     <center id='top'><h1>Arjun&nbsp;Passi</h1></center>
