@@ -126,6 +126,12 @@
       font-weight:bold;
     }
 
+    span.work_date {
+      font-size: 9pt; 
+      color: #969595;
+      /*font-style: italic;*/
+    }
+
     a, a:visited, a:link, a:active { 
       color: #e22c29;
       text-decoration: none;
