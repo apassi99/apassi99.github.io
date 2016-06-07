@@ -333,6 +333,19 @@
         $('.menu-icon .bottom').toggleClass('active');
       });
 
+      if (Math.random() > 0.5) {
+
+        var str = '<source src="videos/ogv/seattle_timelapse.ogv" type="video/ogg" /><source src="videos/mp4/seattle_timelapse.mp4" type="video/mp4" />';
+
+        document.getElementById("bg_video").innerHTML = str;
+      }
+
+      else {
+
+        var str = '<source src="videos/mp4/bg_biosphere_2k.mp4" type="video/mp4" />';
+        document.getElementById("bg_video").innerHTML = str;
+      }
+
     </script>
 
     <center id='top'><h1>Arjun&nbsp;Passi</h1></center>
