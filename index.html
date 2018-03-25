@@ -82,20 +82,29 @@
       }
 
       #video-viewport {
+        width: 100%;
+        height: 100%;
         position: absolute;
-        top: 0;
-        left:0;
-        overflow: hidden;
-        z-index: -1; /* for accessing the video by click */
+        padding:0;
+        margin:0;
+        left: 0px;
+        top: 0px;
+        z-index: -1000;
+        overflow:hidden;
         -webkit-background-size:cover;
         -moz-background-size:cover;
         -o-background-size:cover;
         background-size:cover;
-        min-width: 100%;
-        min-height: 100%;
-        width: auto;
-        height: auto;
       }
+
+      #bg_video {
+        min-height: 100%;
+        min-width: 100%;
+        position:absolute;
+        top:0;
+        left:0;
+      }
+
       .dot:before {
         content: " / ";
         color: white;
@@ -235,27 +244,11 @@
   </head>
   <body>
     <div id="video-viewport">
-      <video id="bg_video" width="100%" height="100%" autoplay loop muted>
+      <video id="bg_video" autoplay loop muted>
         <source src="videos/ogv/seattle_timelapse.ogv" type="video/ogg" />
         <source src="videos/mp4/seattle_timelapse.mp4" type="video/mp4" />
       </video> <!-- bg_biosphere_2k seattle_timelapse -->
     </div>
-    <!-- <div id="menu" class="menu-icon">
-            <div class="top rect"></div>
-            <div class="middle rect"></div>
-            <div class="bottom rect"></div>
-    </div>
-
-    <div class="menu-container">
-        <ul>
-          <li><a href="#">Home</a></li>
-
-          <li><a href="https://apassi99.github.io/projects" target="_blank">Projects</a></li>
-
-          <li><a href="https://apassi99.github.io/resume">Resume</a></li>
-
-        </ul>
-    </div> -->
 
     <script>
 
@@ -266,7 +259,6 @@
       $(document).ready(function () {
 
         console.log("document ready called");
-        //document.getElementById('bg_video').addEventListener('ended',videoLoop,false);
 
         jQuery(function() { // runs after DOM has loaded
 
@@ -275,8 +267,8 @@
             vid_h_orig = parseInt(jQuery('video').attr('height'));
             $('#debug').append("<p>DOM loaded</p>");
 
-            //jQuery(window).resize(function () { resizeToCover(); });
-            //jQuery(window).trigger('resize');
+            // jQuery(window).resize(function () { resizeToCover(); });
+            // jQuery(window).trigger('resize');
         });
 
       });
@@ -289,7 +281,7 @@
           videoPlayer = document.getElementById("bg_video_src");
           video=document.getElementById("bg_video");
           var videoSource = new Array();
-          videoSource[0]='video/mp4/bg_biosphere_2k.mp4';
+          videoSource[0]='video/mp4/golden_gate_bridge_timelapse.mp4';
           videoSource[1]='video/ogv/seattle_timelapse.ogv';
           var videoCount = videoSource.length;
 
@@ -323,6 +315,27 @@
             jQuery('#video-viewport').scrollLeft((jQuery('video').width() - jQuery(window).width()) / 2);
             jQuery('#video-viewport').scrollTop((jQuery('video').height() - jQuery(window).height()) / 2);
         };
+
+        var $video  = $('video'),
+            $window = $(window); 
+
+        // $(window).resize(function(){
+            
+        //     var height = $window.height();
+        //     $video.css('height', height);
+            
+        //     var videoWidth = $video.width(),
+        //         windowWidth = $window.width(),
+        //     marginLeftAdjust =   (windowWidth - videoWidth) / 2;
+            
+        //     $video.css({
+        //         // 'height': height,
+        //         // 'width': '100%',
+        //         // 'marginLeft' : marginLeftAdjust
+        //         'object-fit': cover;
+        //     });
+        // }).resize();
+
     </script>
 
     <script>
@@ -342,7 +355,7 @@
 
       else {
 
-        var str = '<source src="videos/mp4/bg_biosphere_2k.mp4" type="video/mp4" />';
+        var str = '<source src="videos/mp4/golden_gate_bridge_timelapse.mp4" type="video/mp4" />';
         document.getElementById("bg_video").innerHTML = str;
       }
 
